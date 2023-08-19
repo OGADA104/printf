@@ -2,12 +2,13 @@
 #include<stdarg.h>
 #include<string.h>
 #include<unistd.h>
+
 /**
+ * _printf - Custom printf function implementation.
+ * @format: The format string.
+ * @...: Additional arguments depending on format string.
  *
- *
- *
- *
- *
+ * Return: The number of characters printed.
  */
 int _printf(const char *format, ...)
 {
@@ -20,7 +21,7 @@ int _printf(const char *format, ...)
 	if (format == NULL)
 		return (-1);
 	va_start(args_list, format);
-	while(*format)
+	while (*format)
 	{
 		if (*format != '%')
 		{
