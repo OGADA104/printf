@@ -18,7 +18,7 @@ int _printf(const char *format, ...)
 	char *str;
 	int str_len = 0;
 	int num, num_len;
-	char num_str[12];
+	char num_str[13];
 
 	if (format == NULL)
 		return (-1);
