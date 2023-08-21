@@ -2,7 +2,7 @@
 #include<stdarg.h>
 #include<string.h>
 #include<unistd.h>
-
+#include<stdio.h>
 /**
  * _printf - Custom printf function implementation.
  * @format: The format string.
