@@ -47,9 +47,16 @@ int _printf(const char *format, ...)
 			else if (*format == 's')
 			{
 				str = va_arg(args_list, char *);
+				if (str == NULL)
+					str = "(NULL)";
 				str_len = strlen(str);
 				write(1, str, str_len);
 				char_print += str_len;
+			}
+			else
+			{
+				write(1, "ERROR: Unsupported format specifier", strlen("ERROR: Unsupported format specifier"));
+				char_print += strlen("ERROR: Unsupported format specifier");
 			}
 		}
 		format++;
