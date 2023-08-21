@@ -17,6 +17,8 @@ int _printf(const char *format, ...)
 	char c;
 	char *str;
 	int str_len = 0;
+	int num, num_len;
+	char num_str[12];
 
 	if (format == NULL)
 		return (-1);
@@ -52,6 +54,13 @@ int _printf(const char *format, ...)
 				str_len = strlen(str);
 				write(1, str, str_len);
 				char_print += str_len;
+			}
+			else if (*format == 'd' || *format == 'i')
+			{
+				num = va_arg(args_list, int);
+				num_len = snprintf(num_str, sizeof(num_str), "%d", num);
+				write(1, num_str, num_len);
+				char_print += num_len;
 			}
 			else
 			{
