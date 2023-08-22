@@ -80,6 +80,34 @@ int _printf(const char *format, ...)
                     print_binary(num, &count);
                     break;
                 }
+		 case 'X':
+		{
+			unsigned int num = va_arg(args, unsigned int);
+			printf("%X", num);
+			count += snprintf(NULL, 0, "%X", num);
+			break;
+		}
+		 case 'u':
+                {
+                    unsigned int num = va_arg(args, unsigned int);
+                    printf("%u", num);
+                    count += snprintf(NULL, 0, "%u", num);
+                    break;
+                }
+                case 'o':
+                {
+                    unsigned int num = va_arg(args, unsigned int);
+                    printf("%o", num);
+                    count += snprintf(NULL, 0, "%o", num);
+                    break;
+                }
+                case 'x':
+                {
+                    unsigned int num = va_arg(args, unsigned int);
+                    printf("%x", num);
+                    count += snprintf(NULL, 0, "%x", num);
+                    break;
+                }
                 case '%':
                     putchar('%');
                     count++;
