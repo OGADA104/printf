@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdarg.h> /* for va_list and va_start */
-#include<main.h>
 /**
  * _printf - Custom printf function implementation.
  * @format: The format string.
