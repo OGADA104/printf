@@ -1,5 +1,22 @@
 #include <stdio.h>
 #include <stdarg.h> /* for va_list and va_start */
+
+/**
+ * print_binary - Print an unsigned integer in binary format.
+ * @n: The unsigned integer to print.
+ * @count: A pointer to the count variable to update.
+ */
+void print_binary(unsigned int n, int *count)
+{
+    if (n > 1)
+        print_binary(n / 2, count);
+
+    putchar('0' + n % 2);
+    (*count)++;
+}
+
+
+
 /**
  * _printf - Custom printf function implementation.
  * @format: The format string.
@@ -7,6 +24,8 @@
  *
  * Return: The number of characters printed.
  */
+
+
 int _printf(const char *format, ...)
 {
     int count = 0; /* Counter to keep track of characters printed */
