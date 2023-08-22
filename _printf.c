@@ -1,3 +1,4 @@
+#include "main.h"
 #include <stdio.h>
 #include <stdarg.h> /* for va_list and va_start */
 
@@ -14,7 +15,26 @@ void print_binary(unsigned int n, int *count)
     putchar('0' + n % 2);
     (*count)++;
 }
+void print_unsigned(unsigned int n, int *count, int base)
+{
+    if (n >= (unsigned int)base)
+        print_unsigned(n / base, count, base);
 
+    putchar("0123456789ABCDEF"[n % base]);
+    (*count)++;
+}
+
+/**
+ * print_pointer - Print the hexadecimal representation of a pointer.
+ * @ptr: The pointer to print.
+ * @count: A pointer to the count variable to update.
+ */
+void print_pointer(void *ptr, int *count)
+{
+    putchar('0');
+    putchar('x');
+    print_unsigned((unsigned long)ptr, count, 16);
+}
 
 
 /**
@@ -83,29 +103,32 @@ int _printf(const char *format, ...)
 		 case 'X':
 		{
 			unsigned int num = va_arg(args, unsigned int);
-			printf("%X", num);
-			count += snprintf(NULL, 0, "%X", num);
+			print_unsigned(num, &count, 16);
 			break;
 		}
 		 case 'u':
                 {
                     unsigned int num = va_arg(args, unsigned int);
-                    printf("%u", num);
-                    count += snprintf(NULL, 0, "%u", num);
+                    print_unsigned(num, &count, 10);
                     break;
                 }
                 case 'o':
                 {
                     unsigned int num = va_arg(args, unsigned int);
                     printf("%o", num);
-                    count += snprintf(NULL, 0, "%o", num);
+		    print_unsigned(num, &count, 8);
                     break;
                 }
                 case 'x':
                 {
                     unsigned int num = va_arg(args, unsigned int);
-                    printf("%x", num);
-                    count += snprintf(NULL, 0, "%x", num);
+                    print_unsigned(num, &count, 16);
+                    break;
+                }
+		case 'p':
+                {
+                    void *ptr = va_arg(args, void *);
+                    print_pointer(ptr, &count);
                     break;
                 }
                 case '%':
