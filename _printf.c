@@ -9,17 +9,19 @@
  */
 void print_binary(unsigned int n, int *count)
 {
-	if (n > 1)
-		print_binary(n / 2, count);
-		putchar('0' + n % 2);
-		(*count)++;
+    if (n > 1)
+        print_binary(n / 2, count);
+
+    putchar('0' + n % 2);
+    (*count)++;
 }
 void print_unsigned(unsigned int n, int *count, int base)
 {
-	if (n >= (unsigned int)base)
-		print_unsigned(n / base, count, base);
-		putchar("0123456789ABCDEF"[n % base]);
-		(*count)++;
+    if (n >= (unsigned int)base)
+        print_unsigned(n / base, count, base);
+
+    putchar("0123456789ABCDEF"[n % base]);
+    (*count)++;
 }
 
 /**
