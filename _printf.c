@@ -48,34 +48,36 @@ void print_pointer(void *ptr, int *count)
 
 int _printf(const char *format, ...)
 {
-	int count = 0; /* Counter to keep track of characters printed */
-	va_list args;  /* Variable argument list */
+    int count = 0; /* Counter to keep track of characters printed */
+    va_list args;  /* Variable argument list */
 
-	va_start(args, format); /* Initialize variable argument list */
-	while (*format)
-	{
-		if (*format != '%')
-		{
-			putchar(*format); /* Print non-format characters */
-			count++;
-		}
-		else
-		{
-			format++; /* Move past the '%' character */
-			switch (*format)
-			{
-				case 'c':
-				{
-					int c = va_arg(args, int);
-					putchar(c);
-					count++;
-					break;
-				}
-				case 's':
-				{
-					char *str = va_arg(args, char *);
-					if (str)
-					{																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																					a while (*str)
+    va_start(args, format); /* Initialize variable argument list */
+
+    while (*format)
+    {
+        if (*format != '%')
+        {
+            putchar(*format); /* Print non-format characters */
+            count++;
+        }
+        else
+        {
+            format++; /* Move past the '%' character */
+            switch (*format)
+            {
+                case 'c':
+                {
+                    int c = va_arg(args, int);
+                    putchar(c);
+                    count++;
+                    break;
+                }
+                case 's':
+                {
+                    char *str = va_arg(args, char *);
+                    if (str)
+                    {
+                        while (*str)
                         {
                             putchar(*str);
                             str++;
