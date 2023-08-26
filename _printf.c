@@ -50,53 +50,6 @@ int _printf(const char *format, ...)
 					count += 6;
 				}
 			}
-			else if (*format == 'd' || *format == 'i') /* Decimal/Integer */
-			{
-				int num = va_arg(args, int);
-				int num_digits = 0;
-				int temp = num;
-
-				if (num == 0) /* Handle zero separately */
-				{
-					_putchar('0');
-					count++;
-				}
-				else
-				{
-					if (num < 0)
-					{
-						_putchar('-');
-						count++;
-						num = -num;
-						temp = -temp;
-					}
-
-					while (temp > 0)
-					{
-						temp /= 10;
-						num_digits++;
-					}
-
-					while (num_digits > 0)
-					{
-						temp = num;
-						int divisor = 1;
-						int i = num_digits - 1;
-
-						while (i > 0)
-						{
-							divisor *= 10;
-							i--;
-						}
-						int digit = temp / divisor;
-
-						_putchar('0' + digit);
-						count++;
-						num -= digit * divisor;
-						num_digits--;
-					}
-				}
-			}
 			else if (*format == '%') /* Percentage sign */
 			{
 				write(1, "%", 1);
